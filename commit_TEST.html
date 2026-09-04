@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>햄스터 이모지 귀엽다!</title>
+<style>
+  :root {
+    --navy: #0f2542;
+    --navy-dark: #081527;
+    --gold: #c9a34e;
+    --paper: #f4f1ea;
+    --line: rgba(201, 163, 78, 0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #1c2b3c 0%, #0a1420 100%);
+    font-family: "Malgun Gothic", "Pretendard", "Segoe UI", sans-serif;
+    padding: 40px 20px;
+  }
+
+  .stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  /* ---- Book Cover ---- */
+  .cover {
+    position: relative;
+    width: 420px;
+    aspect-ratio: 3 / 4.2;
+    background: linear-gradient(150deg, var(--navy) 0%, var(--navy-dark) 100%);
+    border-radius: 4px;
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,0.6),
+      0 10px 25px -10px rgba(0,0,0,0.5),
+      inset 0 0 0 1px rgba(255,255,255,0.05);
+    overflow: hidden;
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* spine shadow */
+  .cover::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 18px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0));
+    z-index: 3;
+  }
+
+  /* subtle paper texture / grid */
+  .blueprint {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.18;
+  }
+
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 34px 32px 30px;
+  }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 14px;
+  }
+
+  .series-badge {
+    border: 1px solid var(--gold);
+    padding: 4px 9px;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+
+  /* isometric building illustration */
+  .illustration {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0 10px;
+  }
+
+  .illustration .hamster {
+    font-size: 96px;
+    line-height: 1;
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+  }
+
+  .title-block {
+    margin-top: auto;
+  }
+
+  .kicker {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  h1 span {
+    display: block;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 6px;
+    letter-spacing: 0;
+  }
+
+  .desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: rgba(244,241,234,0.75);
+    max-width: 320px;
+  }
+
+  .bottom-row {
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  .publisher {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: rgba(244,241,234,0.6);
+  }
+
+  .publisher b {
+    display: block;
+    color: var(--paper);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .edition {
+    font-size: 11px;
+    color: var(--gold);
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  /* ---- Page footer label (for test context) ---- */
+  .test-note {
+    color: rgba(244,241,234,0.45);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="cover">
+      <div class="blueprint"></div>
+      <div class="cover-inner">
+        <div class="top-row">
+          <span>단순 테스트 페이지 입니당</span>
+          <span class="series-badge">VOL. 01</span>
+        </div>
+
+        <div class="illustration">
+          <span class="hamster">🐹</span>
+        </div>
+
+        <div class="title-block">
+          <div class="kicker">일단 푸쉬를 해보겠습니댜</div>
+          <h1>안녕하세요?<span>코드가 많이 지져분하죠</span></h1>
+          <p class="desc">
+            만들어지고 있는건가
+          </p>
+        </div>
+
+        <div class="bottom-row">
+          <div class="publisher">
+            발행처<b>VIVIAN</b>
+          </div>
+          <div class="edition">2026 개정판<br>커밋을 꼭 터미널에서 해야하나요?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-note">test preview — 건축 BIM 교재  시안</div>
+  </div>
+</body>
+</html>
