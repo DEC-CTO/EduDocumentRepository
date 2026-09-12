@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>건축 BIM 교재 목차 레이아웃 ALT</title>
+<style>
+  :root {
+    --main: #1B3A5C;
+    --sub1: #5B8DB8;
+    --sub2: #E7EDF3;
+    --point: #E8873A;
+    --point-text: #D6752A;
+    --font-strong: #1B3A5C;
+    --font-base: #222831;
+    --font-sub: #8A94A6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #3a4552;
+    padding: 48px 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    font-family: "Malgun Gothic", "Pretendard", "Segoe UI", sans-serif;
+  }
+
+  .page {
+    background: #fff;
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.55);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- top banner ---- */
+  .banner {
+    background: var(--main);
+    color: #fff;
+    padding: 16mm 18mm 11mm;
+    height: 46mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+  }
+
+  .banner::after {
+    content: "";
+    position: absolute;
+    left: 18mm;
+    bottom: 7mm;
+    width: 22mm;
+    height: 3pt;
+    background: var(--point);
+  }
+
+  .banner .en {
+    font-size: 9pt;
+    letter-spacing: 0.4em;
+    font-weight: 700;
+    color: var(--sub1);
+    margin-bottom: 3mm;
+  }
+
+  .banner .ko {
+    font-size: 30pt;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+
+  .banner .book {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.65);
+    text-align: right;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+  .banner .book b { color: #fff; font-size: 10pt; display: block; }
+
+  /* ---- content bands ---- */
+  .bands {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .band {
+    flex: 1;
+    display: flex;
+    border-bottom: 0.8pt solid var(--sub2);
+  }
+  .band:last-child { border-bottom: none; }
+
+  .band-num {
+    width: 42mm;
+    flex-shrink: 0;
+    background: var(--main);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 6mm 4mm;
+  }
+  .band:nth-child(even) .band-num { background: var(--sub1); }
+
+  .band-num .n {
+    font-size: 34pt;
+    font-weight: 800;
+    line-height: 0.9;
+    font-family: "Segoe UI", sans-serif;
+  }
+  .band-num .lbl {
+    font-size: 6.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 3mm;
+    color: rgba(255,255,255,0.8);
+    font-weight: 700;
+  }
+
+  .band-body {
+    flex: 1;
+    padding: 6mm 16mm 6mm 8mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* ---- mirrored spread page (verso): PART block on the outer/right edge ---- */
+  .page.mirror .band { flex-direction: row-reverse; }
+  .page.mirror .band-body { padding: 6mm 8mm 6mm 16mm; }
+  /* banner stays aligned with page 1 (book name keeps the same top-right spot) */
+  .page.mirror .banner { flex-direction: row; }
+  .page.mirror .banner::after { display: none; }
+  .page.mirror .banner .book { text-align: right; }
+
+  .band-title {
+    font-size: 13pt;
+    font-weight: 800;
+    color: var(--font-strong);
+    margin-bottom: 1.5mm;
+  }
+  .band-title::after {
+    content: "";
+    display: block;
+    width: 12mm;
+    height: 2pt;
+    background: var(--point);
+    margin-top: 2mm;
+  }
+
+  .items {
+    column-count: 2;
+    column-gap: 12mm;
+    margin-top: 3.5mm;
+  }
+
+  .item {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 8pt;
+    color: var(--font-base);
+    padding: 1.2mm 0;
+    break-inside: avoid;
+  }
+  .item .name { white-space: nowrap; font-weight: 500; }
+  .item .dot {
+    flex: 1;
+    border-bottom: 1px dotted #c3cad4;
+    position: relative;
+    top: -2.5px;
+  }
+  .item .pg {
+    font-weight: 700;
+    color: var(--font-sub);
+    font-size: 7.6pt;
+    min-width: 14px;
+    text-align: right;
+  }
+
+  .foot {
+    padding: 4mm 18mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: var(--font-sub);
+    font-weight: 700;
+    border-top: 1pt solid var(--sub2);
+  }
+  .foot .num { color: var(--main); font-size: 10pt; }
+</style>
+</head>
+<body>
+
+  <!-- ============ PAGE 1 : PART 01 ~ 04 ============ -->
+  <div class="page">
+    <div class="banner">
+      <div>
+        <div class="en">TABLE OF CONTENTS</div>
+        <div class="ko">목차</div>
+      </div>
+    </div>
+
+    <div class="bands">
+
+      <div class="band">
+        <div class="band-num"><span class="n">01</span><span class="lbl">Revit Concept</span></div>
+        <div class="band-body">
+          <div class="band-title">REVIT 개념</div>
+          <div class="items">
+            <div class="item"><span class="name">01. BIM과 Revit 기본개념</span><span class="dot"></span><span class="pg">12</span></div>
+            <div class="item"><span class="name">02. Revit 요소의 위계구조</span><span class="dot"></span><span class="pg">14</span></div>
+            <div class="item"><span class="name">03. Revit 패밀리의 정의와 종류</span><span class="dot"></span><span class="pg">16</span></div>
+            <div class="item"><span class="name">04. 매개변수의 이해</span><span class="dot"></span><span class="pg">18</span></div>
+            <div class="item"><span class="name">05. 뷰(View)란 무엇인가</span><span class="dot"></span><span class="pg">20</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="band-num"><span class="n">02</span><span class="lbl">Basic Modeling</span></div>
+        <div class="band-body">
+          <div class="band-title">REVIT 기초</div>
+          <div class="items">
+            <div class="item"><span class="name">01. 인터페이스 및 기본 조작</span><span class="dot"></span><span class="pg">24</span></div>
+            <div class="item"><span class="name">02. 프로젝트 탐색기 및 파일 관리</span><span class="dot"></span><span class="pg">27</span></div>
+            <div class="item"><span class="name">03. 프로젝트 시작 설정</span><span class="dot"></span><span class="pg">30</span></div>
+            <div class="item"><span class="name">04. 건축·구조 기본 요소 모델링</span><span class="dot"></span><span class="pg">33</span></div>
+            <div class="item"><span class="name">05. 제공 패밀리로 문·창호 배치</span><span class="dot"></span><span class="pg">38</span></div>
+            <div class="item"><span class="name">06. 재료 및 매개변수 적용 실습</span><span class="dot"></span><span class="pg">42</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="band-num"><span class="n">03</span><span class="lbl">Application</span></div>
+        <div class="band-body">
+          <div class="band-title">REVIT 활용</div>
+          <div class="items">
+            <div class="item"><span class="name">01. 건축·구조 파일 분리 운용</span><span class="dot"></span><span class="pg">46</span></div>
+            <div class="item"><span class="name">02. 대지(Site) 파일 작성</span><span class="dot"></span><span class="pg">49</span></div>
+            <div class="item"><span class="name">03. 공유 좌표 설정 및 위치 정렬</span><span class="dot"></span><span class="pg">52</span></div>
+            <div class="item"><span class="name">04. Revit Link 연결 및 관리</span><span class="dot"></span><span class="pg">55</span></div>
+            <div class="item"><span class="name">05. 계단·램프·난간 모델링</span><span class="dot"></span><span class="pg">59</span></div>
+            <div class="item"><span class="name">06. 룸(Room) &amp; 면적 관리</span><span class="dot"></span><span class="pg">64</span></div>
+            <div class="item"><span class="name">07. 태그·주석 및 시트 구성</span><span class="dot"></span><span class="pg">67</span></div>
+            <div class="item"><span class="name">08. 스케줄 작성</span><span class="dot"></span><span class="pg">71</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="band-num"><span class="n">04</span><span class="lbl">Navisworks · Twinmotion</span></div>
+        <div class="band-body">
+          <div class="band-title">BIM 시뮬레이션</div>
+          <div class="items">
+            <div class="item"><span class="name">01. Navisworks 개요 및 인터페이스</span><span class="dot"></span><span class="pg">76</span></div>
+            <div class="item"><span class="name">02. 모델 통합 및 간섭검토</span><span class="dot"></span><span class="pg">79</span></div>
+            <div class="item"><span class="name">03. 공정 시뮬레이션(TimeLiner)</span><span class="dot"></span><span class="pg">83</span></div>
+            <div class="item"><span class="name">04. Twinmotion 개요 및 임포트</span><span class="dot"></span><span class="pg">87</span></div>
+            <div class="item"><span class="name">05. 머티리얼·조명·환경 설정</span><span class="dot"></span><span class="pg">90</span></div>
+            <div class="item"><span class="name">06. 렌더링 및 워크스루 영상 제작</span><span class="dot"></span><span class="pg">93</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="foot">
+      <span class="num">002</span>
+      <span>@D.E.C ALL RIGHTS RESERVED</span>
+    </div>
+  </div>
+
+  <!-- ============ PAGE 2 : PART 05 ~ 07 (mirrored spread) ============ -->
+  <div class="page mirror">
+    <div class="banner">
+      <div></div>
+      <div class="book">2026 개정판<b>건축 BIM 실무 교재</b></div>
+    </div>
+
+    <div class="bands">
+
+      <div class="band">
+        <div class="band-num"><span class="n">05</span><span class="lbl">Family Advanced</span></div>
+        <div class="band-body">
+          <div class="band-title">REVIT 패밀리 심화</div>
+          <div class="items">
+            <div class="item"><span class="name">01. 패밀리 개념과 카테고리</span><span class="dot"></span><span class="pg">98</span></div>
+            <div class="item"><span class="name">02. 개념 매스 활용</span><span class="dot"></span><span class="pg">101</span></div>
+            <div class="item"><span class="name">03. 파라메트릭 패밀리 제작</span><span class="dot"></span><span class="pg">105</span></div>
+            <div class="item"><span class="name">04. 중첩 패밀리 및 배열</span><span class="dot"></span><span class="pg">109</span></div>
+            <div class="item"><span class="name">05. 적응형 컴포넌트</span><span class="dot"></span><span class="pg">112</span></div>
+            <div class="item"><span class="name">06. 패밀리 라이브러리 구축·관리</span><span class="dot"></span><span class="pg">115</span></div>
+            <div class="item"><span class="name">07. 내부 편집 매스 활용</span><span class="dot"></span><span class="pg">118</span></div>
+            <div class="item"><span class="name">08. 공유 매개변수 설정·활용</span><span class="dot"></span><span class="pg">121</span></div>
+            <div class="item"><span class="name">09. 복합요소 심화 모델링 실습</span><span class="dot"></span><span class="pg">124</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="band-num"><span class="n">06</span><span class="lbl">Documentation</span></div>
+        <div class="band-body">
+          <div class="band-title">REVIT 도면화 심화</div>
+          <div class="items">
+            <div class="item"><span class="name">01. 뷰 컨트롤</span><span class="dot"></span><span class="pg">130</span></div>
+            <div class="item"><span class="name">02. 뷰 템플릿 설정 및 활용</span><span class="dot"></span><span class="pg">133</span></div>
+            <div class="item"><span class="name">03. 상세도(Detail) 작성</span><span class="dot"></span><span class="pg">136</span></div>
+            <div class="item"><span class="name">04. 도면 주석 표준화</span><span class="dot"></span><span class="pg">139</span></div>
+            <div class="item"><span class="name">05. 도면 템플릿·타이틀블록</span><span class="dot"></span><span class="pg">142</span></div>
+            <div class="item"><span class="name">06. 물량산출 및 스케줄 고도화</span><span class="dot"></span><span class="pg">145</span></div>
+            <div class="item"><span class="name">07. 위상절단·설계옵션</span><span class="dot"></span><span class="pg">148</span></div>
+            <div class="item"><span class="name">08. 도면 출력 및 배포</span><span class="dot"></span><span class="pg">151</span></div>
+            <div class="item"><span class="name">09. 워크셋 및 협업 파일 운용</span><span class="dot"></span><span class="pg">154</span></div>
+            <div class="item"><span class="name">10. 전문 도면 실습</span><span class="dot"></span><span class="pg">157</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band">
+        <div class="band-num"><span class="n">07</span><span class="lbl">조달청 발주지침 기반</span></div>
+        <div class="band-body">
+          <div class="band-title">REVIT 실무 프로젝트</div>
+          <div class="items">
+            <div class="item"><span class="name">01. 조달청 BIM 발주지침 이해</span><span class="dot"></span><span class="pg">164</span></div>
+            <div class="item"><span class="name">02. 프로젝트 기획 및 모델링 기준</span><span class="dot"></span><span class="pg">167</span></div>
+            <div class="item"><span class="name">03. 설계 단계별 LOD 적용</span><span class="dot"></span><span class="pg">170</span></div>
+            <div class="item"><span class="name">04. 협업·간섭검토 실무</span><span class="dot"></span><span class="pg">174</span></div>
+            <div class="item"><span class="name">05. 납품 도서 구성 및 성과품 작성</span><span class="dot"></span><span class="pg">178</span></div>
+            <div class="item"><span class="name">06. 종합 프로젝트 발표·평가</span><span class="dot"></span><span class="pg">182</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="foot">
+      <span>@D.E.C ALL RIGHTS RESERVED</span>
+      <span class="num">003</span>
+    </div>
+  </div>
+
+</body>
+</html>
